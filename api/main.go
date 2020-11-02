@@ -7,9 +7,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/emmanuelperotto/pismo-test/app/config"
-	"github.com/emmanuelperotto/pismo-test/app/controllers"
-	"github.com/emmanuelperotto/pismo-test/app/models"
+	"github.com/emmanuelperotto/pismo-test/api/config"
+	"github.com/emmanuelperotto/pismo-test/api/controllers"
+	"github.com/emmanuelperotto/pismo-test/api/models"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"

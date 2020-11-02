@@ -1,8 +1,8 @@
 package repositories
 
 import (
-	"github.com/emmanuelperotto/pismo-test/app/config"
-	"github.com/emmanuelperotto/pismo-test/app/models"
+	"github.com/emmanuelperotto/pismo-test/api/config"
+	"github.com/emmanuelperotto/pismo-test/api/models"
 )
 
 // TODO: Validate if the documentNumber is a number

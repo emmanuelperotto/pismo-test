@@ -5,9 +5,9 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/emmanuelperotto/pismo-test/app/models"
-	"github.com/emmanuelperotto/pismo-test/app/repositories"
-	"github.com/emmanuelperotto/pismo-test/app/utils"
+	"github.com/emmanuelperotto/pismo-test/api/models"
+	"github.com/emmanuelperotto/pismo-test/api/repositories"
+	"github.com/emmanuelperotto/pismo-test/api/utils"
 )
 
 func CreateAccount(response http.ResponseWriter, request *http.Request) {
