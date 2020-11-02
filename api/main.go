@@ -17,8 +17,10 @@ import (
 )
 
 func main() {
+	// TODO: extract to small functions
 	// Define routes
 	router := mux.NewRouter()
+	router.HandleFunc("/accounts/{id}", controllers.GetAccount).Methods("GET")
 	router.HandleFunc("/accounts", controllers.CreateAccount).Methods("POST")
 
 	// Connect to DB
@@ -30,8 +32,8 @@ func main() {
 	dbHost := os.Getenv("DB_HOST")
 	dbName := os.Getenv("DB_NAME")
 	// dsn := "user=postgres password=secret123 dbname=pismo_development port=5432 sslmode=disable"
-	DBURL := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", dbHost, dbPort, dbUser, dbName, dbPassword)
-	config.DB, err = gorm.Open(postgres.Open(DBURL), &gorm.Config{})
+	dbConfig := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", dbHost, dbPort, dbUser, dbName, dbPassword)
+	config.DB, err = gorm.Open(postgres.Open(dbConfig), &gorm.Config{})
 
 	if err != nil {
 		panic("Failed to connect database")
