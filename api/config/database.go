@@ -2,13 +2,34 @@ package config
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/emmanuelperotto/pismo-test/api/models"
+	"github.com/joho/godotenv"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-// SeedDB is a function that initializes my database with some data.
-func SeedDB() {
+// SetupDB is the function that initializes the DB connecting to it, migrating and seeding data
+func SetupDB() {
+	err := godotenv.Load()
+	dbUser := os.Getenv("DB_USER")
+	dbPassword := os.Getenv("DB_PASSWORD")
+	dbPort := os.Getenv("DB_PORT")
+	dbHost := os.Getenv("DB_HOST")
+	dbName := os.Getenv("DB_NAME")
+	dbConfig := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", dbHost, dbPort, dbUser, dbName, dbPassword)
+	DB, err = gorm.Open(postgres.Open(dbConfig), &gorm.Config{})
+
+	if err != nil {
+		panic("Failed to connect database")
+	}
+
+	DB.AutoMigrate(&models.Account{}, &models.OperationType{}, &models.Transaction{})
+	seedDB()
+}
+
+func seedDB() {
 	operationTypes := []models.OperationType{
 		{
 			Description: "COMPRA À VISTA",
