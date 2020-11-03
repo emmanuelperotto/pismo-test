@@ -1,4 +1,4 @@
-package services
+package repositories
 
 import (
 	"github.com/emmanuelperotto/pismo-test/api/config"
