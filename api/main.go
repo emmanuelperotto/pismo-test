@@ -34,7 +34,7 @@ func main() {
 		panic("Failed to connect database")
 	}
 
-	config.DB.AutoMigrate(&models.Account{}, &models.OperationType{})
+	config.DB.AutoMigrate(&models.Account{}, &models.OperationType{}, &models.Transaction{})
 	config.SeedDB()
 
 	// Define routes
