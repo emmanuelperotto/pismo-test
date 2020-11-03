@@ -21,3 +21,8 @@ type Transaction struct {
 	OperationTypeID int
 	OperationType   OperationType
 }
+
+// Amount function returns the AmountCents in a formatted value
+func (transaction *Transaction) Amount() float64 {
+	return float64(transaction.AmountCents) / 100.0
+}
