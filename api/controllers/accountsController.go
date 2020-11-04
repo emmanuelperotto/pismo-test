@@ -18,12 +18,12 @@ func CreateAccount(response http.ResponseWriter, request *http.Request) {
 	var data models.Account
 	decoder.Decode(&data)
 
-	acc, err := repositories.CreateAccount(&data)
+	account, err := repositories.CreateAccount(&data)
 
 	if err != nil {
 		utils.ErrorResponse(response, http.StatusUnprocessableEntity, errors.New("Invalid document number").Error())
 	} else {
-		utils.JSONResponse(response, http.StatusCreated, acc)
+		utils.JSONResponse(response, http.StatusCreated, account)
 	}
 }
 

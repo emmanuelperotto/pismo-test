@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-// JSONResponse is a json formatter to be used on controller
+// JSONResponse is a json formatter to be used on controllers
 func JSONResponse(response http.ResponseWriter, statusCode int, data interface{}) {
 	response.Header().Set("Content-Type", "application/json")
 	response.WriteHeader(statusCode)

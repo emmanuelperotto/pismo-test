@@ -8,18 +8,18 @@ import (
 type Transaction struct {
 	// Default columns
 	ID        uint      `gorm:"primaryKey" json:"id"`
-	CreatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"createdAt"`
-	UpdatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"updatedAt"`
+	CreatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"-"`
+	UpdatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"-"`
 
 	// Custom columns
-	AmountCents int       `json:"amount_cents"`
+	AmountCents int       `json:"amountCents"`
 	EventDate   time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"eventDate"`
 
 	// Associations
-	AccountID       int
-	Account         Account
-	OperationTypeID int
-	OperationType   OperationType
+	AccountID       int           `json:"accountID"`
+	Account         Account       `json:"-"`
+	OperationTypeID int           `json:"operationTypeID"`
+	OperationType   OperationType `json:"-"`
 }
 
 // Amount function returns the AmountCents in a formatted value

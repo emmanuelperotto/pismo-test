@@ -1,7 +1,6 @@
 package repositories
 
 import (
-	"github.com/emmanuelperotto/pismo-test/api/config"
 	"github.com/emmanuelperotto/pismo-test/api/models"
 )
 
@@ -9,7 +8,7 @@ import (
 func CreateAccount(account *models.Account) (*models.Account, error) {
 	// TODO: Validate if the documentNumber is a number
 	// TODO: return better errors
-	if err := config.DB.Create(account).Error; err != nil {
+	if err := DB.Create(account).Error; err != nil {
 		return &models.Account{}, err
 	}
 
@@ -20,7 +19,7 @@ func CreateAccount(account *models.Account) (*models.Account, error) {
 func GetAccountByID(id int) (*models.Account, error) {
 	var account models.Account
 
-	if err := config.DB.First(&account, id).Error; err != nil {
+	if err := DB.First(&account, id).Error; err != nil {
 		return &account, err
 	}
 
