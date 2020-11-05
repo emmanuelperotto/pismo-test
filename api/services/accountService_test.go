@@ -29,5 +29,27 @@ var _ = Describe("AccountService", func() {
 				Expect(err).To(BeNil())
 			})
 		})
+
+		When("account doesn't have a DocumentNumber", func() {
+			account := models.Account{
+				DocumentNumber: "",
+			}
+
+			It("returns an error", func() {
+				_, err := services.AccountService.CreateAccount(&account)
+				Expect(err.Error()).To(Equal("DocumentNumber can't be empty"))
+			})
+		})
+
+		When("account doesn't have a numeric DocumentNumber", func() {
+			account := models.Account{
+				DocumentNumber: "HelloWorld",
+			}
+
+			It("returns an error", func() {
+				_, err := services.AccountService.CreateAccount(&account)
+				Expect(err.Error()).To(Equal("DocumentNumber must be a number"))
+			})
+		})
 	})
 })
