@@ -5,9 +5,9 @@ import (
 )
 
 // CreateTransaction tries to persist a Transaction in the DB. It can return an error
-func CreateTransaction(transaction *models.Transaction) (*models.Transaction, error) {
+func (repository *Repo) CreateTransaction(transaction *models.Transaction) (*models.Transaction, error) {
 	// TODO: return better errors
-	if err := DB.Create(transaction).Error; err != nil {
+	if err := repository.DB.Create(transaction).Error; err != nil {
 		return &models.Transaction{}, err
 	}
 

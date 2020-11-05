@@ -8,6 +8,7 @@ import (
 
 	"github.com/emmanuelperotto/pismo-test/api/models"
 	"github.com/emmanuelperotto/pismo-test/api/repositories"
+	"github.com/emmanuelperotto/pismo-test/api/services"
 	"github.com/emmanuelperotto/pismo-test/api/utils"
 	"github.com/gorilla/mux"
 )
@@ -18,7 +19,7 @@ func CreateAccount(response http.ResponseWriter, request *http.Request) {
 	var data models.Account
 	decoder.Decode(&data)
 
-	account, err := repositories.CreateAccount(&data)
+	account, err := services.AccountService.CreateAccount(&data)
 
 	if err != nil {
 		utils.ErrorResponse(response, http.StatusUnprocessableEntity, errors.New("Invalid document number").Error())
@@ -32,7 +33,7 @@ func GetAccount(response http.ResponseWriter, request *http.Request) {
 	params := mux.Vars(request)
 	id, _ := strconv.Atoi(params["id"])
 
-	acc, err := repositories.GetAccountByID(id)
+	acc, err := repositories.Repository.GetAccountByID(id)
 	if err != nil {
 		utils.ErrorResponse(response, http.StatusNotFound, err.Error())
 	} else {

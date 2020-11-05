@@ -10,6 +10,14 @@ import (
 	"gorm.io/gorm"
 )
 
+type Repo struct {
+	DB *gorm.DB
+}
+
+var (
+	Repository Repo
+)
+
 // SetupDB is the function that initializes the DB connecting to it, migrating and seeding data
 func SetupDB() {
 	err := godotenv.Load()
@@ -19,13 +27,13 @@ func SetupDB() {
 	dbHost := os.Getenv("DB_HOST")
 	dbName := os.Getenv("DB_NAME")
 	dbConfig := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", dbHost, dbPort, dbUser, dbName, dbPassword)
-	DB, err = gorm.Open(postgres.Open(dbConfig), &gorm.Config{})
+	Repository.DB, err = gorm.Open(postgres.Open(dbConfig), &gorm.Config{})
 
 	if err != nil {
 		panic("Failed to connect database")
 	}
 
-	DB.AutoMigrate(&models.Account{}, &models.OperationType{}, &models.Transaction{})
+	Repository.DB.AutoMigrate(&models.Account{}, &models.OperationType{}, &models.Transaction{})
 	seedDB()
 }
 
@@ -47,15 +55,10 @@ func seedDB() {
 
 	for _, operationType := range operationTypes {
 		fmt.Println("Trying to find or create OperationType with description: " + operationType.Description)
-		err := DB.Where("description = ?", operationType.Description).FirstOrCreate(&operationType).Error
+		err := Repository.DB.Where("description = ?", operationType.Description).FirstOrCreate(&operationType).Error
 
 		if err != nil {
 			fmt.Println("Error: " + err.Error())
 		}
 	}
 }
-
-// DB is a global instance to access database
-var (
-	DB *gorm.DB
-)

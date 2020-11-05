@@ -15,7 +15,7 @@ func CreateTransaction(response http.ResponseWriter, request *http.Request) {
 	var data models.Transaction
 	decoder.Decode(&data)
 
-	transaction, err := repositories.CreateTransaction(&data)
+	transaction, err := repositories.Repository.CreateTransaction(&data)
 
 	if err != nil {
 		utils.ErrorResponse(response, http.StatusUnprocessableEntity, err.Error())
