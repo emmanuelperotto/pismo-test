@@ -10,11 +10,11 @@ import (
 
 type accountCreator interface {
 	CreateAccount(account *models.Account) (*models.Account, error)
+	FindAccountByID(id int) (*models.Account, error)
 }
 
 type accountService struct{}
 
-// CreateAccount is
 func (service accountService) CreateAccount(account *models.Account) (*models.Account, error) {
 	if account.DocumentNumber == "" {
 		return account, errors.New("DocumentNumber can't be empty")
@@ -25,6 +25,10 @@ func (service accountService) CreateAccount(account *models.Account) (*models.Ac
 	}
 
 	return repositories.AccountRepository.SaveAccountInDB(account)
+}
+
+func (service accountService) FindAccountByID(id int) (*models.Account, error) {
+	return repositories.AccountRepository.GetAccountByID(id)
 }
 
 // AccountService is an instance of the service to be accessed outside

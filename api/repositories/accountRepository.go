@@ -6,6 +6,7 @@ import (
 
 type accountRepoInterface interface {
 	SaveAccountInDB(account *models.Account) (*models.Account, error)
+	GetAccountByID(id int) (*models.Account, error)
 }
 
 type accountRepo struct{}
@@ -21,14 +22,11 @@ func (repository accountRepo) SaveAccountInDB(account *models.Account) (*models.
 func (repository accountRepo) GetAccountByID(id int) (*models.Account, error) {
 	var account models.Account
 
-	if err := Repository.DB.First(&account, id).Error; err != nil {
-		return &account, err
-	}
+	err := Repository.DB.First(&account, id).Error
 
-	return &account, nil
+	return &account, err
 }
 
-// AccountRepository is
 var (
 	AccountRepository accountRepoInterface = accountRepo{}
 )
