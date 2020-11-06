@@ -40,16 +40,20 @@ func SetupDB() {
 func seedDB() {
 	operationTypes := []models.OperationType{
 		{
-			Description: "COMPRA À VISTA",
+			Description:           "COMPRA À VISTA",
+			ShouldWithdrawBalance: true,
 		},
 		{
-			Description: "COMPRA PARCELADA",
+			Description:           "COMPRA PARCELADA",
+			ShouldWithdrawBalance: true,
 		},
 		{
-			Description: "SAQUE",
+			Description:           "SAQUE",
+			ShouldWithdrawBalance: true,
 		},
 		{
-			Description: "PAGAMENTO",
+			Description:           "PAGAMENTO",
+			ShouldWithdrawBalance: false,
 		},
 	}
 

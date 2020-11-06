@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/emmanuelperotto/pismo-test/api/models"
-	"github.com/emmanuelperotto/pismo-test/api/repositories"
+	"github.com/emmanuelperotto/pismo-test/api/services"
 	"github.com/emmanuelperotto/pismo-test/api/utils"
 )
 
@@ -15,7 +15,7 @@ func CreateTransaction(response http.ResponseWriter, request *http.Request) {
 	var data models.Transaction
 	decoder.Decode(&data)
 
-	transaction, err := repositories.Repository.CreateTransaction(&data)
+	transaction, err := services.CreateTransaction.Create(&data)
 
 	if err != nil {
 		utils.ErrorResponse(response, http.StatusUnprocessableEntity, err.Error())

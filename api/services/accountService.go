@@ -8,6 +8,7 @@ import (
 	"github.com/emmanuelperotto/pismo-test/api/repositories"
 )
 
+// FIXME: Extract it to 2 services/usecases (Creator and Reader)
 type accountCreator interface {
 	CreateAccount(account *models.Account) (*models.Account, error)
 	FindAccountByID(id int) (*models.Account, error)
@@ -23,6 +24,8 @@ func (service accountService) CreateAccount(account *models.Account) (*models.Ac
 	if _, err := strconv.Atoi(account.DocumentNumber); err != nil {
 		return account, errors.New("DocumentNumber must be a number")
 	}
+
+	// TODO: add validation to return "Account already exists"
 
 	return repositories.AccountRepository.SaveAccountInDB(account)
 }
