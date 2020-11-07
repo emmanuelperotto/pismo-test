@@ -11,6 +11,8 @@ type accountRepoInterface interface {
 
 type accountRepo struct{}
 
+// TODO: add tests
+
 // SaveAccountInDB tries to persist an Account in the DB. It can return an error
 func (repository accountRepo) SaveAccountInDB(account *models.Account) (*models.Account, error) {
 	err := Repository.DB.Create(account).Error
@@ -27,6 +29,7 @@ func (repository accountRepo) GetAccountByID(id int) (*models.Account, error) {
 	return &account, err
 }
 
+// AccountRepository wraps db queries associated to accounts table
 var (
 	AccountRepository accountRepoInterface = accountRepo{}
 )

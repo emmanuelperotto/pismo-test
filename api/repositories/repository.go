@@ -10,12 +10,13 @@ import (
 	"gorm.io/gorm"
 )
 
-type Repo struct {
+type repo struct {
 	DB *gorm.DB
 }
 
+// Repository is a struct that will a DB connection
 var (
-	Repository Repo
+	Repository repo
 )
 
 // SetupDB is the function that initializes the DB connecting to it, migrating and seeding data

@@ -9,6 +9,8 @@ import (
 	"github.com/emmanuelperotto/pismo-test/api/utils"
 )
 
+// TODO: add tests
+
 // CreateTransaction receives body params and creates a Transaction
 func CreateTransaction(response http.ResponseWriter, request *http.Request) {
 	decoder := json.NewDecoder(request.Body)

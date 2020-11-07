@@ -4,6 +4,8 @@ import (
 	"github.com/emmanuelperotto/pismo-test/api/models"
 )
 
+// TODO: add tests
+
 type transactionRepoInterface interface {
 	SaveTransactionInDB(transaction *models.Transaction) (*models.Transaction, error)
 }
