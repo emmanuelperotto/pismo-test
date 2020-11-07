@@ -1,13 +1,4 @@
 mode: set
-github.com/emmanuelperotto/pismo-test/api/controllers/accountsController.go:17.73,24.16 5 1
-github.com/emmanuelperotto/pismo-test/api/controllers/accountsController.go:24.16,26.3 1 1
-github.com/emmanuelperotto/pismo-test/api/controllers/accountsController.go:26.8,28.3 1 1
-github.com/emmanuelperotto/pismo-test/api/controllers/accountsController.go:32.70,37.16 4 1
-github.com/emmanuelperotto/pismo-test/api/controllers/accountsController.go:37.16,39.3 1 1
-github.com/emmanuelperotto/pismo-test/api/controllers/accountsController.go:39.8,41.3 1 1
-github.com/emmanuelperotto/pismo-test/api/controllers/transactionsController.go:15.77,22.16 5 0
-github.com/emmanuelperotto/pismo-test/api/controllers/transactionsController.go:22.16,24.3 1 0
-github.com/emmanuelperotto/pismo-test/api/controllers/transactionsController.go:24.8,26.3 1 0
 github.com/emmanuelperotto/pismo-test/api/services/createAccount.go:17.94,20.16 2 1
 github.com/emmanuelperotto/pismo-test/api/services/createAccount.go:24.2,24.64 1 1
 github.com/emmanuelperotto/pismo-test/api/services/createAccount.go:20.16,22.3 1 1
@@ -31,3 +22,12 @@ github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:39.16,41
 github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:43.73,45.3 1 1
 github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:47.72,49.3 1 1
 github.com/emmanuelperotto/pismo-test/api/services/searchAccount.go:14.79,16.2 1 1
+github.com/emmanuelperotto/pismo-test/api/controllers/accountsController.go:15.73,22.16 5 1
+github.com/emmanuelperotto/pismo-test/api/controllers/accountsController.go:22.16,24.3 1 1
+github.com/emmanuelperotto/pismo-test/api/controllers/accountsController.go:24.8,26.3 1 1
+github.com/emmanuelperotto/pismo-test/api/controllers/accountsController.go:30.70,35.16 4 1
+github.com/emmanuelperotto/pismo-test/api/controllers/accountsController.go:35.16,37.3 1 1
+github.com/emmanuelperotto/pismo-test/api/controllers/accountsController.go:37.8,39.3 1 1
+github.com/emmanuelperotto/pismo-test/api/controllers/transactionsController.go:13.77,20.16 5 1
+github.com/emmanuelperotto/pismo-test/api/controllers/transactionsController.go:20.16,22.3 1 1
+github.com/emmanuelperotto/pismo-test/api/controllers/transactionsController.go:22.8,24.3 1 1

@@ -1,6 +1,10 @@
 # Intro
 
-The code was designed to have clear reponsabilities and to be easy to test and mock. I developed it guided to interfaces.
+The code was designed to have clear responsibilities and to be easy to test and mock. I developed it guided to interfaces.
+
+# Test Coverage
+
+![test-coverage](./doc/test-coverage.png)
 
 # Folder Structure
 
@@ -10,7 +14,7 @@ Here is the brain, the core use cases is written here. Files here will be respon
 
 ## **api/controllers**
 
-Where I store the transactionsController and accountsController. Their responsability is to get a request, call a service and return a response to the client.
+Where I store the transactionsController and accountsController. Their responsibility is to get a request, call a service and return a response to the client.
 
 ## **api/models**
 
