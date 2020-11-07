@@ -17,7 +17,7 @@ func CreateAccount(response http.ResponseWriter, request *http.Request) {
 	var data models.Account
 	decoder.Decode(&data)
 
-	account, err := services.AccountService.CreateAccount(&data)
+	account, err := services.CreateAccount.Create(&data)
 
 	if err != nil {
 		utils.ErrorResponse(response, http.StatusUnprocessableEntity, err.Error())
@@ -31,7 +31,7 @@ func GetAccount(response http.ResponseWriter, request *http.Request) {
 	params := mux.Vars(request)
 	id, _ := strconv.Atoi(params["id"])
 
-	account, err := services.AccountService.FindAccountByID(id)
+	account, err := services.SearchAccount.FindByID(id)
 	if err != nil {
 		utils.ErrorResponse(response, http.StatusNotFound, err.Error())
 	} else {

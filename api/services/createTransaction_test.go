@@ -1,6 +1,7 @@
 package services_test
 
 import (
+	"errors"
 	"fmt"
 
 	"github.com/emmanuelperotto/pismo-test/api/models"
@@ -31,15 +32,17 @@ var _ = Describe("Create Transaction", func() {
 	Context("Create", func() {
 		var operationType models.OperationType
 		var transaction models.Transaction
-
 		operationTypeRepoMock := operationTypeRepoMock{}
 		transactionRepoMock := transactionRepositoryMock{}
-		operationTypeRepoMock.getByIDResult = func(id int) (*models.OperationType, error) {
-			return &operationType, nil
-		}
 
-		repositories.TransactionRepository = transactionRepoMock
-		repositories.OperationTypeRepository = operationTypeRepoMock
+		BeforeEach(func() {
+			operationTypeRepoMock.getByIDResult = func(id int) (*models.OperationType, error) {
+				return &operationType, nil
+			}
+
+			repositories.TransactionRepository = transactionRepoMock
+			repositories.OperationTypeRepository = operationTypeRepoMock
+		})
 
 		When("transaction is valid", func() {
 			It("returns no error", func() {
@@ -76,6 +79,27 @@ var _ = Describe("Create Transaction", func() {
 				_, err := services.CreateTransaction.Create(&transaction)
 
 				Expect(err.Error()).To(Equal("OperationTypeID is required"))
+			})
+		})
+
+		When("OperationTypeID doesn't exist in the database", func() {
+			BeforeEach(func() {
+				operationTypeRepoMock.getByIDResult = func(id int) (*models.OperationType, error) {
+					return &operationType, errors.New("not found")
+				}
+				repositories.OperationTypeRepository = operationTypeRepoMock
+			})
+
+			It("returns an error", func() {
+				transaction := models.Transaction{
+					AmountCents:     1000,
+					AccountID:       1,
+					OperationTypeID: 1,
+				}
+
+				_, err := services.CreateTransaction.Create(&transaction)
+
+				Expect(err.Error()).To(Equal("OperationTypeID not found"))
 			})
 		})
 
