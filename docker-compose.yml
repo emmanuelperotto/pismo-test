@@ -1,7 +1,7 @@
 version: "3"
 services:
   app:
-    container_name: full_app
+    container_name: app
     build: .
     ports:
       - 3000:3000
@@ -9,13 +9,13 @@ services:
     volumes:
       - api:/usr/src/app/
     depends_on:
-      - fullstack-postgres
+      - db
     networks:
-      - fullstack
+      - app-network
 
-  fullstack-postgres:
+  db:
     image: postgres:latest
-    container_name: full_db_postgres
+    container_name: db
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
@@ -26,7 +26,7 @@ services:
     volumes:
       - database_postgres:/var/lib/postgresql/data
     networks:
-      - fullstack
+      - app-network
 
   pgadmin:
     image: dpage/pgadmin4
@@ -35,11 +35,11 @@ services:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     depends_on:
-      - fullstack-postgres
+      - db
     ports:
       - "5050:80"
     networks:
-      - fullstack
+      - app-network
     restart: unless-stopped
 
 volumes:
@@ -48,5 +48,5 @@ volumes:
 
 # Networks to be created to facilitate communication between containers
 networks:
-  fullstack:
+  app-network:
     driver: bridge

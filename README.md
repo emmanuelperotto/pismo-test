@@ -68,3 +68,9 @@ $ cd pismo-test
 ```
 $ docker-compose up --build
 ```
+
+# How to run the tests
+
+```
+$ go test ./... -v
+```
