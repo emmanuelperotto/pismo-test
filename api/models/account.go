@@ -7,7 +7,7 @@ import (
 // Account is the struct that defines the account model
 type Account struct {
 	// Default columns
-	ID        uint      `gorm:"primaryKey" json:"id"`
+	ID        int       `gorm:"primaryKey" json:"id"`
 	CreatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"-"`
 	UpdatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"-"`
 

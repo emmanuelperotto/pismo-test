@@ -11,8 +11,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// TODO: add tests
-
 // CreateAccount receives body params and creates an Account
 func CreateAccount(response http.ResponseWriter, request *http.Request) {
 	decoder := json.NewDecoder(request.Body)
