@@ -1,0 +1,18 @@
+mode: set
+github.com/emmanuelperotto/pismo-test/api/services/accountService.go:19.95,20.34 1 1
+github.com/emmanuelperotto/pismo-test/api/services/accountService.go:24.2,24.64 1 1
+github.com/emmanuelperotto/pismo-test/api/services/accountService.go:30.2,30.64 1 1
+github.com/emmanuelperotto/pismo-test/api/services/accountService.go:20.34,22.3 1 1
+github.com/emmanuelperotto/pismo-test/api/services/accountService.go:24.64,26.3 1 1
+github.com/emmanuelperotto/pismo-test/api/services/accountService.go:33.80,35.2 1 1
+github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:17.103,18.32 1 1
+github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:22.2,22.38 1 1
+github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:26.2,28.16 2 1
+github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:32.2,32.73 1 1
+github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:36.2,36.72 1 1
+github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:40.2,40.76 1 1
+github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:18.32,20.3 1 1
+github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:22.38,24.3 1 1
+github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:28.16,30.3 1 0
+github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:32.73,34.3 1 1
+github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:36.72,38.3 1 1

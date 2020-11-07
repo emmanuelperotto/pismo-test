@@ -72,5 +72,6 @@ $ docker-compose up --build
 # How to run the tests
 
 ```
-$ go test ./... -v
+$ go test -coverprofile=coverage.out -v ./...
+$ go tool cover -html=coverage.out
 ```
