@@ -6,7 +6,7 @@ The code was designed to have clear reponsabilities and to be easy to test and m
 
 ## **api/services**
 
-Here is the brain, the core functionality is written here. Files here will be responsible for use cases like: Create a Transaction and an Account
+Here is the brain, the core use cases is written here. Files here will be responsible for use cases like: Create a Transaction and an Account
 
 ## **api/controllers**
 
@@ -20,6 +20,40 @@ A model is a structure that shapes the data. It defines the column attributes an
 
 Here I'm storing some structs that will make the queries in the DB. Create, Update, Delete and Find queries are wrapped inside it. This way my service doesn't need to know which adapter is being used (postgres, mysql, mongo, etc...)
 
+# API Doc
+
+## POST /accounts
+
+- Create Valid account
+  ![valid-account](./doc/create-valid-account.png)
+
+- Invalid Account (non-numeric document number)
+  ![invalid-account](./doc/non-numeric-account.png)
+
+- Invalid Account (empty document number)
+  ![empty-docNumber-invalid-account](./doc/empty-docNumber.png)
+
+## GET /accounts/:id
+
+- Existent account
+  ![found-account](./doc/account-found.png)
+
+- Non existent account
+  ![invalid-account](./doc/account-not-found.png)
+
+## POST /transactions
+
+- Valid transactions
+  ![valid-transaction](./doc/valid-transaction.png)
+
+  ![valid-negative-transaction](./doc/valid-negative-transaction.png)
+
+- Invalid transactions
+  ![invalid-negative-transaction](./doc/invalid-negative-transaction.png)
+
+  ![invalid-positive-transaction](./doc/invalid-positive-transaction.png)
+
+  ![invalid-operation-type](./doc/invalid-operation-type.png)
 
 # How to run
 

@@ -22,7 +22,7 @@ func (service accountService) CreateAccount(account *models.Account) (*models.Ac
 	}
 
 	if _, err := strconv.Atoi(account.DocumentNumber); err != nil {
-		return account, errors.New("DocumentNumber must be a number")
+		return account, errors.New("DocumentNumber must contain only numbers")
 	}
 
 	// TODO: add validation to return "Account already exists"

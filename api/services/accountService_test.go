@@ -59,7 +59,7 @@ var _ = Describe("AccountService", func() {
 
 			It("returns an error", func() {
 				_, err := services.AccountService.CreateAccount(&account)
-				Expect(err.Error()).To(Equal("DocumentNumber must be a number"))
+				Expect(err.Error()).To(Equal("DocumentNumber must contain only numbers"))
 			})
 		})
 	})
