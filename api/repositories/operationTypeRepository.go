@@ -10,8 +10,6 @@ type operationTypeRepoInterface interface {
 
 type operationTypeRepo struct{}
 
-// TODO: add tests
-
 // GetByID tries to find an operationType given an ID. It can return an error if not found
 func (repository operationTypeRepo) GetByID(id int) (*models.OperationType, error) {
 	var operationType models.OperationType
