@@ -7,11 +7,10 @@ import (
 type accountRepoInterface interface {
 	SaveAccountInDB(account *models.Account) (*models.Account, error)
 	GetAccountByID(id int) (*models.Account, error)
+	Update(account *models.Account) (*models.Account, error)
 }
 
 type accountRepo struct{}
-
-// TODO: add tests
 
 // SaveAccountInDB tries to persist an Account in the DB. It can return an error
 func (repository accountRepo) SaveAccountInDB(account *models.Account) (*models.Account, error) {
@@ -27,6 +26,12 @@ func (repository accountRepo) GetAccountByID(id int) (*models.Account, error) {
 	err := Repository.DB.First(&account, id).Error
 
 	return &account, err
+}
+
+func (repository accountRepo) Update(account *models.Account) (*models.Account, error) {
+	err := Repository.DB.Save(account).Error
+
+	return account, err
 }
 
 // AccountRepository wraps db queries associated to accounts table

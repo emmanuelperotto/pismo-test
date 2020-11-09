@@ -12,7 +12,8 @@ type Account struct {
 	UpdatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"-"`
 
 	// Custom columns
-	DocumentNumber string `gorm:"unique;not null" json:"documentNumber"`
+	DocumentNumber            string `gorm:"unique;not null" json:"documentNumber"`
+	AvailableCreditLimitCents int    `gorm:"not null" json:"availableCreditLimitCents"`
 
 	// Associations
 	Transactions []Transaction `json:"-"`

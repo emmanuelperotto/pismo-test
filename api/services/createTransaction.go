@@ -21,7 +21,28 @@ func (service createTransaction) Create(transaction *models.Transaction) (*model
 		return transaction, err
 	}
 
-	return repositories.TransactionRepository.SaveTransactionInDB(transaction)
+	repositories.TransactionRepository.SaveTransactionInDB(transaction)
+	account, err := repositories.AccountRepository.GetAccountByID(transaction.AccountID)
+
+	err = assignNewLimit(account, transaction)
+
+	if err != nil {
+		return transaction, err
+	}
+
+	repositories.AccountRepository.Update(account)
+
+	return transaction, err
+}
+
+func assignNewLimit(account *models.Account, transaction *models.Transaction) error {
+	account.AvailableCreditLimitCents = account.AvailableCreditLimitCents + transaction.AmountCents
+
+	if account.AvailableCreditLimitCents < 0 {
+		return errors.New("Invalid limit")
+	}
+
+	return nil
 }
 
 // FIXME: add a validation layer and implement validations with Composite Design Pattern

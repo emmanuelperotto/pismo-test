@@ -12,6 +12,10 @@ func (mock accountRepositoryMock) SaveAccountInDB(account *models.Account) (*mod
 	return account, nil
 }
 
+func (mock accountRepositoryMock) Update(account *models.Account) (*models.Account, error) {
+	return account, nil
+}
+
 var _ = Describe("Create Account", func() {
 	var mock accountRepositoryMock = accountRepositoryMock{}
 

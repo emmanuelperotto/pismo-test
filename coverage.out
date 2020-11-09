@@ -18,7 +18,6 @@ github.com/emmanuelperotto/pismo-test/api/repositories/repository.go:33.16,34.38
 github.com/emmanuelperotto/pismo-test/api/repositories/repository.go:41.15,61.47 2 0
 github.com/emmanuelperotto/pismo-test/api/repositories/repository.go:61.47,65.17 3 0
 github.com/emmanuelperotto/pismo-test/api/repositories/repository.go:65.17,67.4 1 0
-github.com/emmanuelperotto/pismo-test/api/services/searchAccount.go:14.79,16.2 1 1
 github.com/emmanuelperotto/pismo-test/api/services/createAccount.go:17.94,20.16 2 1
 github.com/emmanuelperotto/pismo-test/api/services/createAccount.go:24.2,24.64 1 1
 github.com/emmanuelperotto/pismo-test/api/services/createAccount.go:20.16,22.3 1 1
@@ -41,3 +40,4 @@ github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:33.38,35
 github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:39.16,41.3 1 1
 github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:43.73,45.3 1 1
 github.com/emmanuelperotto/pismo-test/api/services/createTransaction.go:47.72,49.3 1 1
+github.com/emmanuelperotto/pismo-test/api/services/searchAccount.go:14.79,16.2 1 1

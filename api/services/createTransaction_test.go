@@ -27,6 +27,25 @@ func (mock operationTypeRepoMock) GetByID(id int) (*models.OperationType, error)
 	return mock.getByIDResult(id)
 }
 
+// AccountRepositoryMock
+type accountRepoMock struct{}
+
+func (mock accountRepoMock) Update(account *models.Account) (*models.Account, error) {
+	return account, nil
+}
+
+func (mock accountRepoMock) GetAccountByID(id int) (*models.Account, error) {
+	return &models.Account{
+		ID:                        1,
+		DocumentNumber:            "123",
+		AvailableCreditLimitCents: 1000,
+	}, nil
+}
+
+func (mock accountRepoMock) SaveAccountInDB(*models.Account) (*models.Account, error) {
+	return &models.Account{}, nil
+}
+
 // Tests
 var _ = Describe("Create Transaction", func() {
 	Context("Create", func() {
@@ -34,6 +53,7 @@ var _ = Describe("Create Transaction", func() {
 		var transaction models.Transaction
 		operationTypeRepoMock := operationTypeRepoMock{}
 		transactionRepoMock := transactionRepositoryMock{}
+		accountRepoMock := accountRepoMock{}
 
 		BeforeEach(func() {
 			operationTypeRepoMock.getByIDResult = func(id int) (*models.OperationType, error) {
@@ -42,6 +62,7 @@ var _ = Describe("Create Transaction", func() {
 
 			repositories.TransactionRepository = transactionRepoMock
 			repositories.OperationTypeRepository = operationTypeRepoMock
+			repositories.AccountRepository = accountRepoMock
 		})
 
 		When("transaction is valid", func() {
@@ -145,6 +166,44 @@ var _ = Describe("Create Transaction", func() {
 				expectedMessage := fmt.Sprintf("AmountCents must be negative when registering: %s", operationType.Description)
 
 				Expect(err.Error()).To(Equal(expectedMessage))
+			})
+		})
+
+		When("account has enough limit", func() {
+			BeforeEach(func() {
+				transaction = models.Transaction{
+					AmountCents:     -1000,
+					AccountID:       1,
+					OperationTypeID: operationType.ID,
+				}
+			})
+
+			It("returns no error", func() {
+				_, err := services.CreateTransaction.Create(&transaction)
+
+				Expect(err).To(BeNil())
+			})
+
+			// It("returns correct limit", func() {
+			// 	services.CreateTransaction.Create(&transaction)
+
+			// 	Expect(account.AvailableCreditLimitCents).To(Equal(1))
+			// })
+		})
+
+		When("account doesn't enough limit", func() {
+			BeforeEach(func() {
+				transaction = models.Transaction{
+					AmountCents:     -1500,
+					AccountID:       1,
+					OperationTypeID: operationType.ID,
+				}
+			})
+
+			It("returns error", func() {
+				_, err := services.CreateTransaction.Create(&transaction)
+
+				Expect(err.Error()).To(Equal("Invalid limit"))
 			})
 		})
 	})
