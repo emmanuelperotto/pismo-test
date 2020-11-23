@@ -62,7 +62,7 @@ Here I'm storing some structs that will make the queries in the DB. Create, Upda
 # How to run
 
 ```
-$ git pull https://github.com/emmanuelperotto/pismo-test.git
+$ git pull https://github.com/emmanuelperotto/transactions.git
 ```
 
 ```
